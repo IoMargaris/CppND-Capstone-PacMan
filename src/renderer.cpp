@@ -63,7 +63,7 @@ void Renderer::Render(PacMan const &pacman, Ghost const &ghost, Map const &map)
             switch (map.GetMapElement(i, j))
             {
             case Status::kFree:
-                SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x00, 0x00, 0xFF);
+                SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x00, 0x00, 0xFF); // Black
                 SDL_RenderFillRect(sdl_renderer, &block);
                 break;
             case Status::kFood:
@@ -85,7 +85,7 @@ void Renderer::Render(PacMan const &pacman, Ghost const &ghost, Map const &map)
     block.y = static_cast<int>(pacman.pos_y) * block.h;
     if (pacman.alive) 
     {
-        SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x7A, 0xCC, 0xFF);
+        SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x7A, 0xCC, 0xFF); // Yellow
     } else {
         SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
     }
@@ -99,7 +99,7 @@ void Renderer::Render(PacMan const &pacman, Ghost const &ghost, Map const &map)
     {
         SDL_SetRenderDrawColor(sdl_renderer, 0x89, 0xC4, 0xF4, 0xFF); // Jordy Blue
     } else {
-        SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
+        SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF); // Red
     }
     
     SDL_RenderFillRect(sdl_renderer, &block);

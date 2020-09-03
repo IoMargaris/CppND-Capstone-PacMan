@@ -33,6 +33,7 @@ void Map::Initialize()
                 break;
             case 1:
                 SetMapElement(row, col, Status::kFood);
+                IncreaseTotalFood();
                 col++;
                 break;
             case 2:
@@ -43,7 +44,7 @@ void Map::Initialize()
                 break;
             }
         }
-        //std::cout << "\n";
+
         row++;
     }
 }
@@ -52,7 +53,7 @@ void Map::Print()
 {
     for (int i = 0; i < grid_width; i++)
     {
-        for (int j = 0; j < grid_width; j++) 
+        for (int j = 0; j < grid_height; j++) 
         {
             std::cout << ParseStatus(GetMapElement(i, j));
         }
@@ -78,13 +79,12 @@ int Map::ParseStatus(Status status)
     }
 }
 
-Status Map::GetMapElement(int pos_x, int pos_y) const
+Status Map::GetMapElement(int i, int j) const
 {
-    return map[pos_x][pos_y];
+    return map[i][j];
 }
 
-void Map::SetMapElement(int pos_x, int pos_y, Status status)
+void Map::SetMapElement(int i, int j, Status status)
 {
-    // map[pos_x][pos_y] = status;
-    map.at(pos_x).at(pos_y) = status;
+    map[i][j] = status;
 } 

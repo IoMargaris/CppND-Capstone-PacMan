@@ -14,8 +14,7 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
     Uint32 frame_start;
     Uint32 frame_end;
     Uint32 frame_duration;
-    int frame_count = 0;
-    bool running = true;
+ 
     map.Initialize();
     map.Print();
 
@@ -50,6 +49,13 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
         {
             SDL_Delay(target_frame_duration - frame_duration);
         }
+
+        if (map.GetCurrentTotalFood() == 0)
+        {
+            std::cout << "You won!\n";
+            running = false;
+        }
+        
     }
 }
 
@@ -61,6 +67,19 @@ void Game::Update()
 
     pacman.Update(map, score);
     ghost.Update(map, score);
+
+    // Collision of pacman and ghost detection which terminates the program
+    int pacman_x = static_cast<int>(pacman.pos_x);
+    int pacman_y = static_cast<int>(pacman.pos_y);
+    int ghost_x = static_cast<int>(ghost.pos_x);
+    int ghost_y = static_cast<int>(ghost.pos_y);
+    if (pacman_x == ghost_x && pacman_y == ghost_y)
+    {
+        std::cout << "Collision with ghost detected!\n" << "Game Over! You lose...!\n";
+        pacman.alive = false;
+        running = false;
+    }
+    
 
 }
 
