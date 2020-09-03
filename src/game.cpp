@@ -59,10 +59,8 @@ void Game::Update()
     if (!pacman.alive)
         return;
 
-    pacman.Update();
-    ghost.Update();
-    int new_x = static_cast<int>(pacman.pos_x);
-    int new_y = static_cast<int>(pacman.pos_y);
+    pacman.Update(map, score);
+    ghost.Update(map, score);
 
 }
 

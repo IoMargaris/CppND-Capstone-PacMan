@@ -15,10 +15,10 @@ public:
         }
 
     void Initialize() override;
-    void Update() override;
+    void Update(Map &map, int &score) override;
 
 private:
-    void UpdatePos();
+    void UpdatePos(float new_pos_x, float new_pos_y);
 
 };
 

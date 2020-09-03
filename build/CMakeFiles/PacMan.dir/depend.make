@@ -4,6 +4,7 @@
 CMakeFiles/PacMan.dir/src/controller.cpp.o: ../src/agent.h
 CMakeFiles/PacMan.dir/src/controller.cpp.o: ../src/controller.cpp
 CMakeFiles/PacMan.dir/src/controller.cpp.o: ../src/controller.h
+CMakeFiles/PacMan.dir/src/controller.cpp.o: ../src/map.h
 CMakeFiles/PacMan.dir/src/controller.cpp.o: ../src/pacman.h
 CMakeFiles/PacMan.dir/src/controller.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
 CMakeFiles/PacMan.dir/src/controller.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_assert.h
@@ -110,6 +111,7 @@ CMakeFiles/PacMan.dir/src/game.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SD
 CMakeFiles/PacMan.dir/src/ghost.cpp.o: ../src/agent.h
 CMakeFiles/PacMan.dir/src/ghost.cpp.o: ../src/ghost.cpp
 CMakeFiles/PacMan.dir/src/ghost.cpp.o: ../src/ghost.h
+CMakeFiles/PacMan.dir/src/ghost.cpp.o: ../src/map.h
 CMakeFiles/PacMan.dir/src/ghost.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
 CMakeFiles/PacMan.dir/src/ghost.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_assert.h
 CMakeFiles/PacMan.dir/src/ghost.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_atomic.h
@@ -216,6 +218,7 @@ CMakeFiles/PacMan.dir/src/map.cpp.o: ../src/map.cpp
 CMakeFiles/PacMan.dir/src/map.cpp.o: ../src/map.h
 
 CMakeFiles/PacMan.dir/src/pacman.cpp.o: ../src/agent.h
+CMakeFiles/PacMan.dir/src/pacman.cpp.o: ../src/map.h
 CMakeFiles/PacMan.dir/src/pacman.cpp.o: ../src/pacman.cpp
 CMakeFiles/PacMan.dir/src/pacman.cpp.o: ../src/pacman.h
 CMakeFiles/PacMan.dir/src/pacman.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h

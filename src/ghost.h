@@ -20,10 +20,10 @@ public:
     }
 
     void Initialize() override;
-    void Update() override;
+    void Update(Map &map, int &score) override;
 
 private:
-    void UpdatePos();
+    void UpdatePos(float new_pos_x, float new_pos_y);
     std::random_device dev;
     std::mt19937 engine;
     std::uniform_int_distribution<int> random_w;

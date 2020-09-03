@@ -1,7 +1,9 @@
 #ifndef AGENT_H
 #define AGENT_H
 
-// An abstract base class that PacMan and the ghosts will inherit from
+#include "map.h"
+
+// An abstract base class
 class Agent
 {
 public:
@@ -11,11 +13,11 @@ public:
         : grid_width(grid_width),
           grid_height(grid_height) {}
     
-    // These two pure virtual functions will be implemented by the derived classes: PacMan & Ghost
+    // These two pure virtual functions will be implemented by the derived classes
     virtual void Initialize() = 0;
-    virtual void Update() = 0;
+    virtual void Update(Map &map, int &score) = 0;
 
-    Direction direction = Direction::kUp;
+    Direction direction = Direction::kDown;
     const float speed{0.1f};
     float pos_x;
     float pos_y;
