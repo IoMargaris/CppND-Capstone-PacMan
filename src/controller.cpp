@@ -1,41 +1,44 @@
 #include "controller.h"
 #include <iostream>
 #include "SDL.h"
-#include "snake.h"
+//#include "snake.h"
+#include "pacman.h"
 
-void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
-                                 Snake::Direction opposite) const {
-  if (snake.direction != opposite || snake.size == 1) snake.direction = input;
-  return;
+void Controller::ChangeDirection(PacMan &pacman, PacMan::Direction input) const
+{
+    pacman.direction = input;
+    //return;
 }
 
-void Controller::HandleInput(bool &running, Snake &snake) const {
-  SDL_Event e;
-  while (SDL_PollEvent(&e)) {
-    if (e.type == SDL_QUIT) {
-      running = false;
-    } else if (e.type == SDL_KEYDOWN) {
-      switch (e.key.keysym.sym) {
-        case SDLK_UP:
-          ChangeDirection(snake, Snake::Direction::kUp,
-                          Snake::Direction::kDown);
-          break;
+void Controller::HandleInput(bool &running, PacMan &pacman) const 
+{
+    SDL_Event e;
+    while (SDL_PollEvent(&e))
+    {
+        if (e.type == SDL_QUIT) 
+        {
+            running = false;
+        } 
+        else if (e.type == SDL_KEYDOWN) 
+        {
+            switch (e.key.keysym.sym) 
+            {
+                case SDLK_UP:
+                ChangeDirection(pacman, PacMan::Direction::kUp);
+                break;
 
-        case SDLK_DOWN:
-          ChangeDirection(snake, Snake::Direction::kDown,
-                          Snake::Direction::kUp);
-          break;
+                case SDLK_DOWN:
+                ChangeDirection(pacman, PacMan::Direction::kDown);
+                break;
 
-        case SDLK_LEFT:
-          ChangeDirection(snake, Snake::Direction::kLeft,
-                          Snake::Direction::kRight);
-          break;
+                case SDLK_LEFT:
+                ChangeDirection(pacman, PacMan::Direction::kLeft);
+                break;
 
-        case SDLK_RIGHT:
-          ChangeDirection(snake, Snake::Direction::kRight,
-                          Snake::Direction::kLeft);
-          break;
-      }
+                case SDLK_RIGHT:
+                ChangeDirection(pacman, PacMan::Direction::kRight);
+                break;
+            }
+        }
     }
-  }
 }
