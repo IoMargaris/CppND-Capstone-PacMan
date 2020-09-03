@@ -3,10 +3,8 @@
 
 #include <vector>
 #include "SDL.h"
-//#include "snake.h"
-
-// TODO: Create pacman.h header file
 #include "pacman.h"
+#include "ghost.h"
 
 class Renderer 
 {
@@ -17,7 +15,7 @@ public:
 
     // TODO: Create PacMan Class
     // void Render(Snake const snake, SDL_Point const &food);
-    void Render(PacMan const pacman);
+    void Render(PacMan const &pacman, Ghost const &ghost);
     void UpdateWindowTitle(int score, int fps);
 
 private:

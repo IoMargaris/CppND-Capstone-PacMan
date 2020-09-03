@@ -2,6 +2,12 @@
 #include <cmath>
 #include <iostream>
 
+void PacMan::Initialize()
+{
+  pos_x = static_cast<int>(grid_width / 2);
+  pos_y = static_cast<int>(grid_height / 2);
+}
+
 void PacMan::Update()
 {
   UpdatePos();
