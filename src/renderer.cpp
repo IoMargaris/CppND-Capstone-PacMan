@@ -85,7 +85,7 @@ void Renderer::Render(PacMan const &pacman, Ghost const &ghost, Map const &map)
     block.y = static_cast<int>(pacman.pos_y) * block.h;
     if (pacman.alive) 
     {
-        SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x7A, 0xCC, 0xFF); // Yellow
+        SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0x00, 0x00); // Yellow
     } else {
         SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
     }
@@ -97,7 +97,7 @@ void Renderer::Render(PacMan const &pacman, Ghost const &ghost, Map const &map)
     block.y = static_cast<int>(ghost.pos_y) * block.h;
     if (ghost.alive) 
     {
-        SDL_SetRenderDrawColor(sdl_renderer, 0x89, 0xC4, 0xF4, 0xFF); // Jordy Blue
+        SDL_SetRenderDrawColor(sdl_renderer, 0x80, 0x00, 0x80, 0xFF); // Purple
     } else {
         SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF); // Red
     }
