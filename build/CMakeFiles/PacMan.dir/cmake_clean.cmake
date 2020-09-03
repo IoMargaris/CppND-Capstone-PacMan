@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/PacMan.dir/src/game.cpp.o"
   "CMakeFiles/PacMan.dir/src/ghost.cpp.o"
   "CMakeFiles/PacMan.dir/src/main.cpp.o"
+  "CMakeFiles/PacMan.dir/src/map.cpp.o"
   "CMakeFiles/PacMan.dir/src/pacman.cpp.o"
   "CMakeFiles/PacMan.dir/src/renderer.cpp.o"
   "PacMan"

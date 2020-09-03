@@ -58,6 +58,7 @@ CMakeFiles/PacMan.dir/src/game.cpp.o
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/game.cpp
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/game.h
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/ghost.h
+ /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/map.h
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/pacman.h
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/renderer.h
  /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
@@ -162,6 +163,7 @@ CMakeFiles/PacMan.dir/src/main.cpp.o
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/game.h
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/ghost.h
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/main.cpp
+ /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/map.h
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/pacman.h
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/renderer.h
  /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
@@ -210,6 +212,9 @@ CMakeFiles/PacMan.dir/src/main.cpp.o
  /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_video.h
  /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/begin_code.h
  /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/close_code.h
+CMakeFiles/PacMan.dir/src/map.cpp.o
+ /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/map.cpp
+ /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/map.h
 CMakeFiles/PacMan.dir/src/pacman.cpp.o
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/agent.h
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/pacman.cpp
@@ -263,6 +268,7 @@ CMakeFiles/PacMan.dir/src/pacman.cpp.o
 CMakeFiles/PacMan.dir/src/renderer.cpp.o
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/agent.h
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/ghost.h
+ /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/map.h
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/pacman.h
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/renderer.cpp
  /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/renderer.h

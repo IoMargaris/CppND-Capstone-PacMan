@@ -7,6 +7,7 @@
 #include "renderer.h"
 #include "pacman.h"
 #include "ghost.h"
+#include "map.h"
 
 class Game 
 {
@@ -21,6 +22,7 @@ public:
 private:
     PacMan pacman;
     Ghost ghost;
+    Map map;
 
     int score{0};
 

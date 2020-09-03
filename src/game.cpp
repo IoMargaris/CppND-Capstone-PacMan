@@ -4,7 +4,8 @@
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
       : pacman(grid_width, grid_height),
-        ghost(grid_width, grid_height) {}
+        ghost(grid_width, grid_height),
+        map(grid_width, grid_height) {}
 
 
 void Game::Run(Controller const &controller, Renderer &renderer, std::size_t target_frame_duration) 
@@ -15,6 +16,8 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
     Uint32 frame_duration;
     int frame_count = 0;
     bool running = true;
+    map.Initialize();
+    map.Print();
 
     while (running)
     {
@@ -23,7 +26,7 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
         // Input, Update, Render - the main game loop.
         controller.HandleInput(running, pacman);
         Update();
-        renderer.Render(pacman, ghost);
+        renderer.Render(pacman, ghost, map);
 
         frame_end = SDL_GetTicks();
 

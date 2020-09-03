@@ -43,7 +43,7 @@ Renderer::~Renderer()
   SDL_Quit();
 }
 
-void Renderer::Render(PacMan const &pacman, Ghost const &ghost) 
+void Renderer::Render(PacMan const &pacman, Ghost const &ghost, Map const &map) 
 {
     SDL_Rect block;
     block.w = screen_width / grid_width;
@@ -53,11 +53,32 @@ void Renderer::Render(PacMan const &pacman, Ghost const &ghost)
     SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0xFF);
     SDL_RenderClear(sdl_renderer);
 
-    // // Render food
-    // SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xCC, 0x00, 0xFF);
-    // block.x = food.x * block.w;
-    // block.y = food.y * block.h;
-    // SDL_RenderFillRect(sdl_renderer, &block);
+    // Render map
+    for (int i = 0; i < grid_width; i++)
+    {
+        for (int j = 0; j < grid_height; j++)
+        {
+            block.x = i * block.w;
+            block.y = j * block.h;
+            switch (map.GetMapElement(i, j))
+            {
+            case Status::kFree:
+                SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x00, 0x00, 0xFF);
+                SDL_RenderFillRect(sdl_renderer, &block);
+                break;
+            case Status::kFood:
+                SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0xB1, 0x6A, 0xFF); // Jade
+                SDL_RenderFillRect(sdl_renderer, &block);
+                break;
+            case Status::kWall:
+                SDL_SetRenderDrawColor(sdl_renderer, 0x2C, 0x3E, 0x50, 0xFF); //  Madison
+                SDL_RenderFillRect(sdl_renderer, &block);
+                break;
+            default:
+                break;
+            }
+        }
+    }
 
     // Render PacMan
     block.x = static_cast<int>(pacman.pos_x) * block.w;
@@ -76,7 +97,7 @@ void Renderer::Render(PacMan const &pacman, Ghost const &ghost)
     block.y = static_cast<int>(ghost.pos_y) * block.h;
     if (ghost.alive) 
     {
-        SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x00, 0xFF, 0xFF);
+        SDL_SetRenderDrawColor(sdl_renderer, 0x89, 0xC4, 0xF4, 0xFF); // Jordy Blue
     } else {
         SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
     }

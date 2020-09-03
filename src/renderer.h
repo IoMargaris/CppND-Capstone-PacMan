@@ -5,6 +5,7 @@
 #include "SDL.h"
 #include "pacman.h"
 #include "ghost.h"
+#include "map.h"
 
 class Renderer 
 {
@@ -13,9 +14,7 @@ public:
             const std::size_t grid_width, const std::size_t grid_height);
     ~Renderer();
 
-    // TODO: Create PacMan Class
-    // void Render(Snake const snake, SDL_Point const &food);
-    void Render(PacMan const &pacman, Ghost const &ghost);
+    void Render(PacMan const &pacman, Ghost const &ghost, Map const &map);
     void UpdateWindowTitle(int score, int fps);
 
 private:
