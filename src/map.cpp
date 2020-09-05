@@ -17,26 +17,32 @@ Map::~Map()
 void Map::Initialize()
 {
     std::string line;
-    int word;
+    char word;
+    char c;
     int row = 0;
     while (std::getline(file, line))
     {
         int col = 0;
         std::stringstream ss(line);
-        while (ss >> word)
+        while (ss >> word >> c)
         {
             switch (word)
             {
-            case 0:
+            case 'u':
                 SetMapElement(row, col, Status::kFree);
                 col++;
                 break;
-            case 1:
+            case 'o':
                 SetMapElement(row, col, Status::kFood);
                 IncreaseTotalFood();
                 col++;
                 break;
-            case 2:
+            case 'O':
+                SetMapElement(row, col, Status::kSpecial);
+                IncreaseTotalFood();
+                col++;
+                break;
+            case 'W':
                 SetMapElement(row, col, Status::kWall);
                 col++;
                 break;
@@ -55,24 +61,26 @@ void Map::Print()
     {
         for (int j = 0; j < grid_height; j++) 
         {
-            std::cout << ParseStatus(GetMapElement(i, j));
+            std::cout << ParseStatus(GetMapElement(i, j)) << ' ';
         }
         std::cout << "\n";
     }
 }
 
-int Map::ParseStatus(Status status)
+char Map::ParseStatus(Status status)
 {
     switch (status)
     {
     case Status::kFree:
-        return 0;
+        return 'u';
         break;
     case Status::kFood:
-        return 1;
+        return 'o';
         break;
+    case Status::kSpecial:
+        return 'O';
     case Status::kWall:
-        return 2;
+        return 'W';
         break;
     default:
         break;

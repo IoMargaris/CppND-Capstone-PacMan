@@ -3,9 +3,20 @@
 #include "SDL.h"
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
-      : pacman(grid_width, grid_height),
-        ghost(grid_width, grid_height),
-        map(grid_width, grid_height) {}
+      : grid_width(grid_width), grid_height(grid_height),
+        pacman(grid_width, grid_height),
+        map(grid_width, grid_height)
+{
+    Initialize();
+}
+
+void Game::Initialize()
+{
+  for (int i = 0; i < 4; i++)
+  {
+    ghosts.emplace_back(Ghost(grid_width, grid_height, Colour(i)));
+  }
+}
 
 
 void Game::Run(Controller const &controller, Renderer &renderer, std::size_t target_frame_duration) 
@@ -17,6 +28,10 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
  
     map.Initialize();
     map.Print();
+    for (auto &ghost : ghosts)
+    {
+        ghost.Reset();
+    }
 
     while (running)
     {
@@ -25,7 +40,7 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
         // Input, Update, Render - the main game loop.
         controller.HandleInput(running, pacman);
         Update();
-        renderer.Render(pacman, ghost, map);
+        renderer.Render(pacman, ghosts, map);
 
         frame_end = SDL_GetTicks();
 
@@ -66,20 +81,28 @@ void Game::Update()
         return;
 
     pacman.Update(map, score);
-    ghost.Update(map, score);
+    for (auto &ghost : ghosts)
+    {
+        ghost.getTarget(pacman);
+        ghost.MoveTowardTarget(map);
+        ghost.Update(map, score);
+    }
 
     // Collision of pacman and ghost detection which terminates the program
     int pacman_x = static_cast<int>(pacman.pos_x);
     int pacman_y = static_cast<int>(pacman.pos_y);
-    int ghost_x = static_cast<int>(ghost.pos_x);
-    int ghost_y = static_cast<int>(ghost.pos_y);
-    if (pacman_x == ghost_x && pacman_y == ghost_y)
+
+    for(Ghost const &ghost : ghosts)
     {
-        std::cout << "Collision with ghost detected!\n" << "Game Over! You lose...!\n";
-        pacman.alive = false;
-        running = false;
+        int ghost_x = static_cast<int>(ghost.pos_x);
+        int ghost_y = static_cast<int>(ghost.pos_y);
+        if (pacman_x == ghost_x && pacman_y == ghost_y)
+        {
+            std::cout << "Collision with ghost detected!\n" << "Game Over! You lose...!\n";
+            pacman.alive = false;
+            running = false;
+        }
     }
-    
 
 }
 

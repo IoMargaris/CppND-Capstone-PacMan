@@ -9,7 +9,7 @@ class Agent
 public:
     enum class Direction{ kUp, kDown, kLeft, kRight };
 
-    Agent(int grid_width, int grid_height)
+    Agent(size_t grid_width, size_t grid_height)
         : grid_width(grid_width),
           grid_height(grid_height) {}
     
@@ -17,13 +17,13 @@ public:
     virtual void Initialize() = 0;
     virtual void Update(Map &map, int &score) = 0;
 
-    Direction direction = Direction::kDown;
-    const float speed{0.1f};
+    Direction CurrentDirection = Direction::kRight;
+    float speed{0.1f};
     float pos_x;
     float pos_y;
     bool alive{true};
-    int grid_width;
-    int grid_height;
+    size_t grid_width;
+    size_t grid_height;
 
 };
 #endif // AGENT_H 

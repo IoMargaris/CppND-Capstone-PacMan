@@ -14,6 +14,7 @@ class Game
 public:
     Game(std::size_t grid_width, std::size_t grid_height);
 
+    void Initialize();
     void Run(Controller const &controller, Renderer &renderer, std::size_t target_frame_duration);
 
     int GetScore() const;
@@ -21,12 +22,14 @@ public:
 
 private:
     PacMan pacman;
-    Ghost ghost;
+    std::vector<Ghost> ghosts;
     Map map;
 
     int frame_count = 0;
     bool running = true;
     int score{0};
+    size_t grid_width;
+    size_t grid_height;
 
     void Update();
 };

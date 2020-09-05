@@ -14,7 +14,7 @@ public:
             const std::size_t grid_width, const std::size_t grid_height);
     ~Renderer();
 
-    void Render(PacMan const &pacman, Ghost const &ghost, Map const &map);
+    void Render(PacMan const &pacman, std::vector<Ghost> &ghost, Map const &map);
     void UpdateWindowTitle(int score, int fps);
 
 private:

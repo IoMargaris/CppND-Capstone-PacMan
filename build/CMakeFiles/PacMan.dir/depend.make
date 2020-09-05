@@ -112,6 +112,7 @@ CMakeFiles/PacMan.dir/src/ghost.cpp.o: ../src/agent.h
 CMakeFiles/PacMan.dir/src/ghost.cpp.o: ../src/ghost.cpp
 CMakeFiles/PacMan.dir/src/ghost.cpp.o: ../src/ghost.h
 CMakeFiles/PacMan.dir/src/ghost.cpp.o: ../src/map.h
+CMakeFiles/PacMan.dir/src/ghost.cpp.o: ../src/pacman.h
 CMakeFiles/PacMan.dir/src/ghost.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
 CMakeFiles/PacMan.dir/src/ghost.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_assert.h
 CMakeFiles/PacMan.dir/src/ghost.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_atomic.h

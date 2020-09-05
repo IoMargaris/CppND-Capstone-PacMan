@@ -43,9 +43,10 @@ Renderer::~Renderer()
   SDL_Quit();
 }
 
-void Renderer::Render(PacMan const &pacman, Ghost const &ghost, Map const &map) 
+void Renderer::Render(PacMan const &pacman, std::vector<Ghost> &ghosts, Map const &map) 
 {
     SDL_Rect block;
+    SDL_Point point;
     block.w = screen_width / grid_width;
     block.h = screen_height / grid_height;
 
@@ -68,7 +69,28 @@ void Renderer::Render(PacMan const &pacman, Ghost const &ghost, Map const &map)
                 break;
             case Status::kFood:
                 SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0xB1, 0x6A, 0xFF); // Jade
-                SDL_RenderFillRect(sdl_renderer, &block);
+
+                for (int l = i * block.w + block.w / 4; l < i * block.w + 3 * block.w / 4; l++)
+                {
+                    for (int m = j * block.h + block.h / 4; m < j * block.h + 3 * block.h / 4; m++)
+                    {
+                        point.x = l;
+                        point.y = m;
+                        SDL_RenderDrawPoint(sdl_renderer, point.x, point.y);
+                    }
+                }
+                break;
+            case Status::kSpecial:
+                SDL_SetRenderDrawColor(sdl_renderer, 0x89, 0xC4, 0xF4, 0xFF); // Jordy Blue
+                for (int l = i * block.w + block.w / 4; l < i * block.w + 3 * block.w / 4; l++)
+                {
+                    for (int m = j * block.h + block.h / 4; m < j * block.h + 3 * block.h / 4; m++)
+                    {
+                        point.x = l;
+                        point.y = m;
+                        SDL_RenderDrawPoint(sdl_renderer, point.x, point.y);
+                    }
+                }
                 break;
             case Status::kWall:
                 SDL_SetRenderDrawColor(sdl_renderer, 0x2C, 0x3E, 0x50, 0xFF); //  Madison
@@ -93,16 +115,39 @@ void Renderer::Render(PacMan const &pacman, Ghost const &ghost, Map const &map)
     SDL_RenderFillRect(sdl_renderer, &block);
 
     // Render Ghost
-    block.x = static_cast<int>(ghost.pos_x) * block.w;
-    block.y = static_cast<int>(ghost.pos_y) * block.h;
-    if (ghost.alive) 
+    for(Ghost const &ghost : ghosts)
     {
-        SDL_SetRenderDrawColor(sdl_renderer, 0x80, 0x00, 0x80, 0xFF); // Purple
-    } else {
-        SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF); // Red
-    }
+        block.x = static_cast<int>(ghost.pos_x) * block.w;
+        block.y = static_cast<int>(ghost.pos_y) * block.h;
+
+        if (ghost.alive) 
+        {
+            switch (ghost.GetColour())
+            {
+            case Colour::kRed:
+               SDL_SetRenderDrawColor(sdl_renderer, 0xFA, 0x80, 0x72, 0xFF); // Salmon
+                break;
+            case Colour::kBlue:
+                SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0xBF, 0xFF, 0xFF); // Deep Skyblue
+                break;
+            case Colour::kYellow:
+                SDL_SetRenderDrawColor(sdl_renderer, 0xF0, 0xE6, 0x8C, 0xFF); // khaki
+                break;
+            case Colour::kPink:
+                SDL_SetRenderDrawColor(sdl_renderer, 0xDB, 0x70, 0x93, 0xFF); // Pale violetred
+                break;
+            default:
+                break;
+            }
+            SDL_SetRenderDrawColor(sdl_renderer, 0x80, 0x00, 0x80, 0xFF); // Purple
+        } 
+        else 
+        {
+            SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF); // Red
+        }
     
-    SDL_RenderFillRect(sdl_renderer, &block);
+        SDL_RenderFillRect(sdl_renderer, &block);
+    }
 
     // Update Screen
     SDL_RenderPresent(sdl_renderer);
