@@ -120,7 +120,15 @@ void Renderer::Render(PacMan const &pacman, std::vector<Ghost> &ghosts, Map cons
         block.x = static_cast<int>(ghost.pos_x) * block.w;
         block.y = static_cast<int>(ghost.pos_y) * block.h;
 
-        if (ghost.alive) 
+        if (ghost.IsEaten())
+        {
+            SDL_SetRenderDrawColor(sdl_renderer, 0x83, 0x83, 0x83, 0xFF); // Dark Gray
+        }
+        else if (ghost.GetMode() == Mode::kFrighten)
+        {
+            SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x00, 0x99, 0xFF); // Dark Blue
+        }
+        else
         {
             switch (ghost.GetColour())
             {
@@ -139,12 +147,7 @@ void Renderer::Render(PacMan const &pacman, std::vector<Ghost> &ghosts, Map cons
             default:
                 break;
             }
-            SDL_SetRenderDrawColor(sdl_renderer, 0x80, 0x00, 0x80, 0xFF); // Purple
         } 
-        else 
-        {
-            SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF); // Red
-        }
     
         SDL_RenderFillRect(sdl_renderer, &block);
     }

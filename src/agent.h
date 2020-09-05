@@ -15,7 +15,6 @@ public:
     
     // These two pure virtual functions will be implemented by the derived classes
     virtual void Initialize() = 0;
-    virtual void Update(Map &map, int &score) = 0;
 
     Direction CurrentDirection = Direction::kRight;
     float speed{0.1f};

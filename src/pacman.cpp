@@ -9,8 +9,17 @@ void PacMan::Initialize()
   pos_y = 16.0f;
 }
 
-void PacMan::Update(Map &map, int &score)
+void PacMan::Update(Map &map, int &score, int frame_counter)
 {
+    if (powered)
+    {
+        powered_end_frame++;
+        if (powered_end_frame - powered_start_frame > powered_periode)
+        {
+            powered = false;
+        }
+    }
+
     float new_pos_x = pos_x;
     float new_pos_y = pos_y;
 
@@ -50,6 +59,9 @@ void PacMan::Update(Map &map, int &score)
     case Status::kSpecial:
         map.SetMapElement(block_x, block_y, Status::kFree);
         map.DecreaseTotalFood();
+        powered = true;
+        powered_start_frame = frame_counter;
+        powered_end_frame = frame_counter;
         UpdatePos(new_pos_x, new_pos_y);
         break;
     case Status::kWall:
