@@ -10,29 +10,29 @@ void Ghost::Initialize()
     switch (ghost_colour)
     {
     case Colour::kRed:
-        pos_x = 13.5f;
-        pos_y = 19.0f;
+        pos_x = 14.0f;
+        pos_y = 15.0f;
         CurrentDirection = Direction::kLeft;
         mode = Mode::kScatter;
         prev_mode = Mode::kScatter;
         break;
     case Colour::kBlue:
-        pos_x = 11.5f;
-        pos_y = 16.0f;
+        pos_x = 15.0f;
+        pos_y = 15.0f;
         CurrentDirection = Direction::kRight;
         mode = Mode::kChase;
         prev_mode = Mode::kChase;
         break;
     case Colour::kYellow:
-        pos_x = 15.0f;
+        pos_x = 16.0f;
         pos_y = 15.0f;
         CurrentDirection = Direction::kDown;
         mode = Mode::kScatter;
         prev_mode = Mode::kScatter;
         break;
     case Colour::kPink:
-        pos_x = 13.0f;
-        pos_y = 15.5f;
+        pos_x = 17.0f;
+        pos_y = 15.0f;
         CurrentDirection = Direction::kUp;
         mode = Mode::kChase;
         prev_mode = Mode::kChase;

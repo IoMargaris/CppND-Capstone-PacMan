@@ -16,7 +16,7 @@ public:
     // These two pure virtual functions will be implemented by the derived classes
     virtual void Initialize() = 0;
 
-    Direction CurrentDirection = Direction::kRight;
+    Direction CurrentDirection = Direction::kUp;
     float speed{0.1f};
     float pos_x;
     float pos_y;

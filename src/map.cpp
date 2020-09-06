@@ -29,21 +29,21 @@ void Map::Initialize()
             switch (word)
             {
             case 'u':
-                SetMapElement(row, col, Status::kFree);
+                SetMapElement(col, row, Status::kFree);
                 col++;
                 break;
             case 'o':
-                SetMapElement(row, col, Status::kFood);
+                SetMapElement(col, row, Status::kFood);
                 IncreaseTotalFood();
                 col++;
                 break;
             case 'O':
-                SetMapElement(row, col, Status::kSpecial);
+                SetMapElement(col, row, Status::kSpecial);
                 IncreaseTotalFood();
                 col++;
                 break;
             case 'W':
-                SetMapElement(row, col, Status::kWall);
+                SetMapElement(col, row, Status::kWall);
                 col++;
                 break;
             default:

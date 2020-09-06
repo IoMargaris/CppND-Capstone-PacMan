@@ -5,8 +5,8 @@
 
 void PacMan::Initialize()
 {
-  pos_x = 9.0f;
-  pos_y = 16.0f;
+  pos_x = 13.0f;
+  pos_y = 17.0f;
 }
 
 void PacMan::Update(Map &map, int &score, int frame_counter)
