@@ -44,7 +44,12 @@ public:
 
 private:
     // Classical Behaviour
-    void UpdatePos(float new_pos_x, float new_pos_y);
+
+    /**
+     * Check if new tile is wall, when ghost moves in that direction
+     * @param dir reference to a chosen direction instance
+     * @param map reference to a map instance
+     */
     bool IsWall(Direction const dir, Map const &map);
     Status GetNextStatus(Direction const dir, Map const &map);
     Status GetStatus(float x, float y, Map const &map);

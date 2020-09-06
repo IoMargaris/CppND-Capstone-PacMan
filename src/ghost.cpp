@@ -414,13 +414,6 @@ void Ghost::Update(Map const &map)
     }
 }
 
-void Ghost::UpdatePos(float new_pos_x, float new_pos_y)
-{
-    // Wrap the PacMan around to the beginning if going off of the screen.
-    pos_x = fmod(new_pos_x + grid_width, grid_width);
-    pos_y = fmod(new_pos_y + grid_height, grid_height);
-}
-
 bool Ghost::IsWall(Direction const dir, Map const &map)
 {
     return GetNextStatus(dir, map) == Status::kWall;

@@ -34,7 +34,6 @@ public:
 
 private:
     // Classival Behaviour
-    void UpdatePos(float new_pos_x, float new_pos_y);
     bool powered{false};
     int powered_start_frame;
     int powered_end_frame;
