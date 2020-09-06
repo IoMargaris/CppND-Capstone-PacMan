@@ -85,13 +85,19 @@ void Game::Update()
         }
         else
         {
-            ghost.ResumePrevMode();
-            ghost.getTarget(pacman);
-            ghost.MoveTowardTarget(map);
+            if(ghost.IsEaten())
+            {
+                ghost.MoveTowardPen(map);
+            }
+            else
+            {
+                ghost.ResumePrevMode();
+                ghost.getTarget(pacman);
+                ghost.MoveTowardTarget(map);
+            }
+            ghost.Update(map);
         }
-        ghost.Update(map);
     }
-
     // Collision of pacman and ghost detection which terminates the program
     int pacman_x = static_cast<int>(pacman.pos_x);
     int pacman_y = static_cast<int>(pacman.pos_y);

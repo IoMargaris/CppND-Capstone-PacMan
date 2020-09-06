@@ -28,6 +28,8 @@ public:
     void getTarget(PacMan pacman);
     void CornerHandle(Map &map);
     void MoveTowardTarget(Map &map);
+    void MoveTowardPen(Map &map);
+    void MoveInPen(Map &map);
     void Update(Map &map);
 
     // Getters / Setters
@@ -47,6 +49,7 @@ private:
     int CheckJuncs(Map &map);
     bool IsAtCenter();
     float CalcDistance(int x, int y);
+    bool InPen();
 
     // Getter / Setter
     float GetGhostX() const { return pos_x; }

@@ -190,6 +190,7 @@ float Ghost::CalcDistance(int x, int y)
 {
     return std::sqrt(std::pow(target.x - x, 2) + std::pow(target.y - y, 2));
 }
+
 void Ghost::MoveTowardTarget(Map &map)
 {
     float distance = 999.0f;
@@ -277,13 +278,70 @@ void Ghost::SetFrighten(Map &map)
 void Ghost::ResumePrevMode()
 {
     mode = prev_mode;
-    eaten = false;
+    if(InPen())
+    {
+        eaten = false;
+    }
 }
 
 void Ghost::SetDeath()
 {
     eaten = true;
     mode = Mode::kDeath;
+}
+
+void Ghost::MoveTowardPen(Map &map)
+{
+    if (GetGhostX() <= 13.55 && GetGhostX() >= 13.45 && GetGhostY() >= 15.5f && GetGhostY() <= 20.0f)
+    {
+        MoveInPen(map);
+    }
+    else
+    {
+        target = {14, 15};
+        MoveTowardTarget(map);
+    }
+    Update(map);
+}
+
+bool Ghost::InPen()
+{
+    if (GetGhostX() <= 13.00 && GetGhostX() >= 15.00 && GetGhostY() >= 14.0f && GetGhostY() <= 17.0f)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+void Ghost::MoveInPen(Map &map)
+{
+    // Initially check they have the correct X coordinates
+    if (GetGhostX() <= 13.55 && GetGhostX() >= 13.45)
+    {
+        if (GetGhostY() >= 18.95f)
+        {
+            CurrentDirection = Direction::kDown;
+        }
+        else if (GetGhostY() <= 17.0f)
+        {
+            mode = Mode::kLeave;
+        }
+    }
+    else
+    {
+        // If they dont have the correct x coordinate
+        // Determine if they need to move left or right
+        if (GetGhostX() < 13.5f)
+        {
+            CurrentDirection = Direction::kRight;
+        }
+        else if (GetGhostX() > 13.5f)
+        {
+            CurrentDirection = Direction::kLeft;
+        }
+    }
 }
 
 void Ghost::Update(Map &map)
