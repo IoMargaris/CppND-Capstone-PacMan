@@ -15,7 +15,7 @@ public:
      * @param grid_height set height of map
      * @param filename set path to map file
      */
-    Map(int grid_width, int grid_height, std::string filename);
+    Map(size_t grid_width, size_t grid_height, std::string filename);
 
     /*
      * Map Destructor
@@ -74,8 +74,8 @@ public:
 
 private:
     std::vector<std::vector<Status>> map;
-    int grid_width;
-    int grid_height;
+    size_t grid_width;
+    size_t grid_height;
     std::ifstream file;
 
     int total_food = 0;

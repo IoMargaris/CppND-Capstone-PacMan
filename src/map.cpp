@@ -2,7 +2,7 @@
 #include <sstream>
 #include "map.h"
 
-Map::Map(int grid_width, int grid_height, std::string filename)
+Map::Map(size_t grid_width, size_t grid_height, std::string filename)
     : grid_width(grid_width), grid_height(grid_height)
 {
     map.resize(grid_width, std::vector<Status>(grid_height));
