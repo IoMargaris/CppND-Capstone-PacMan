@@ -77,19 +77,14 @@ void Game::Update()
         return;
 
     pacman.Move(map, score, frame_count);
+
+
     for (auto &ghost : ghosts)
     {
-       ghost.Move(pacman, map);
-    }
-    // Collision of pacman and ghost detection which terminates the program
-    int pacman_x = static_cast<int>(pacman.pos_x);
-    int pacman_y = static_cast<int>(pacman.pos_y);
-
-    for(Ghost &ghost : ghosts)
-    {
+        ghost.Move(pacman, map);
+        // Collision of pacman and ghost detection which terminates the program
         pacman.CheckCollision(ghost, running, score);
     }
 }
-
 
 int Game::GetScore() const { return score; }
