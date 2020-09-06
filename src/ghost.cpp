@@ -13,15 +13,15 @@ void Ghost::Initialize()
         pos_x = 14.0f;
         pos_y = 15.0f;
         CurrentDirection = Direction::kLeft;
-        mode = Mode::kScatter;
-        prev_mode = Mode::kScatter;
+        mode = Mode::kChase;
+        prev_mode = Mode::kChase;
         break;
     case Colour::kBlue:
         pos_x = 15.0f;
         pos_y = 15.0f;
         CurrentDirection = Direction::kRight;
-        mode = Mode::kChase;
-        prev_mode = Mode::kChase;
+        mode = Mode::kScatter;
+        prev_mode = Mode::kScatter;
         break;
     case Colour::kYellow:
         pos_x = 16.0f;
@@ -143,16 +143,16 @@ void Ghost::GetTarget(PacMan const &pacman)
         switch (ghost_colour)
         {
         case Colour::kRed:
-            target = {20, 0};
+            target = {28, 0};
             break;
         case Colour::kBlue:
-            target = {5, 0};
+            target = {28, 31};
             break;
         case Colour::kYellow:
-            target = {5, 5};
+            target = {0, 31};
             break;
         case Colour::kPink:
-            target = {0, 20};
+            target = {0, 0};
             break;
         default:
             break;
@@ -328,7 +328,7 @@ void Ghost::MoveTowardPen(Map const &map)
 
 bool Ghost::InPen()
 {
-    if (GetGhostX() <= 13.00 && GetGhostX() >= 15.00 && GetGhostY() >= 14.0f && GetGhostY() <= 17.0f)
+    if (GetGhostX() >= 12.0f && GetGhostX() <= 17.0f && GetGhostY() >= 14.0f && GetGhostY() < 17.0f)
     {
         return true;
     }
@@ -349,7 +349,7 @@ void Ghost::MoveInPen(Map const &map)
         }
         else if (GetGhostY() <= 17.0f)
         {
-            mode = Mode::kLeave;
+            CurrentDirection = Direction::kUp;
         }
     }
     else

@@ -16,7 +16,7 @@ public:
     // Classical Behaviour
     void Initialize();
     void Print();
-    char ParseStatus(Status status);
+    char ParseStatus(Status const &status) const;
     void DecreaseTotalFood() { total_food--; }
     void IncreaseTotalFood() { total_food++; }
 

@@ -67,7 +67,7 @@ void Map::Print()
     }
 }
 
-char Map::ParseStatus(Status status)
+char Map::ParseStatus(Status const &status) const
 {
     switch (status)
     {

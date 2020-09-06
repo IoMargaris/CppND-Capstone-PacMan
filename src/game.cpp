@@ -27,7 +27,7 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
     Uint32 frame_duration;
  
     map.Initialize();
-    map.Print();
+    //map.Print();
 
     while (running)
     {

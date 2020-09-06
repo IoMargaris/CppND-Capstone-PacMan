@@ -10,7 +10,7 @@
 
 class PacMan;
 
-enum class Mode{ kChase, kScatter, kFrighten, kLeave, kDeath, kPen };
+enum class Mode{ kChase, kScatter, kFrighten, kDeath };
 enum class Colour{ kRed = 0, kBlue = 1, kPink = 2, kYellow = 3 };
 
 class Ghost : public Agent
