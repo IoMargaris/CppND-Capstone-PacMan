@@ -105,7 +105,7 @@ void Renderer::Render(PacMan const &pacman, std::vector<Ghost> &ghosts, Map cons
     // Render PacMan
     block.x = static_cast<int>(pacman.pos_x) * block.w;
     block.y = static_cast<int>(pacman.pos_y) * block.h;
-    if (pacman.alive) 
+    if (pacman.IsAlive()) 
     {
         SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0x00, 0x00); // Yellow
     } else {

@@ -26,6 +26,7 @@ public:
     int GetPacBlockY() const { return static_cast<int>(std::floor(GetPacY())); }
     bool IsPowered() const { return powered; }
     bool SetDeath() { alive = false; }
+    bool IsAlive() const { return alive; }
 
 private:
     // Classival Behaviour
@@ -34,6 +35,7 @@ private:
     int powered_start_frame;
     int powered_end_frame;
     static constexpr int powered_periode = 10 * 60;
+    bool alive{true};
 
 };
 

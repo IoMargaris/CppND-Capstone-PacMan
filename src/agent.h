@@ -20,7 +20,7 @@ public:
     float speed{0.1f};
     float pos_x;
     float pos_y;
-    bool alive{true};
+
     size_t grid_width;
     size_t grid_height;
 
