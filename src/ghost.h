@@ -8,6 +8,8 @@
 #include "pacman.h"
 #include <agent.h>
 
+class PacMan;
+
 enum class Mode{ kChase, kScatter, kFrighten, kLeave, kDeath, kPen };
 enum class Colour{ kRed = 0, kBlue = 1, kPink = 2, kYellow = 3 };
 
@@ -24,33 +26,34 @@ public:
 
     // Classical Behaviour
     void Initialize() override;
-
-    void getTarget(PacMan pacman);
-    void CornerHandle(Map &map);
-    void MoveTowardTarget(Map &map);
-    void MoveTowardPen(Map &map);
-    void MoveInPen(Map &map);
-    void Update(Map &map);
+    void Move(PacMan const &pacman, Map const &map);
+    void GetTarget(PacMan const &pacman);
+    void CornerHandle(Map const &map);
+    void MoveTowardTarget(Map const &map);
+    void MoveTowardPen(Map const &map);
+    void MoveInPen(Map const &map);
+    void Update(Map const &map);
+    bool IsEaten() const { return eaten; }
 
     // Getters / Setters
     Colour GetColour() const { return ghost_colour; }
     Mode GetMode() const { return mode; }
     void SetDeath();
-    void SetFrighten(Map &map);
-    void ResumePrevMode();
-    bool IsEaten() const { return eaten; }
+    void SetFrighten(Map const &map);
+    
 
 private:
     // Classical Behaviour
     void UpdatePos(float new_pos_x, float new_pos_y);
-    bool IsWall(Direction dir, Map &map);
-    Status GetNextStatus(Direction dir, Map &map);
-    Status GetStatus(float x, float y, Map &map);
-    int CheckJuncs(Map &map);
+    bool IsWall(Direction const dir, Map const &map);
+    Status GetNextStatus(Direction const dir, Map const &map);
+    Status GetStatus(float x, float y, Map const &map);
+    int CheckJuncs(Map const &map);
     bool IsAtCenter();
     float CalcDistance(int x, int y);
     bool InPen();
-
+    void ResumePrevMode();
+    
     // Getter / Setter
     float GetGhostX() const { return pos_x; }
     float GetGhostY() const { return pos_y; }

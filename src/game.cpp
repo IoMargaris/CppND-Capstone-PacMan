@@ -76,27 +76,10 @@ void Game::Update()
     if (!pacman.IsAlive())
         return;
 
-    pacman.Update(map, score, frame_count);
+    pacman.Move(map, score, frame_count);
     for (auto &ghost : ghosts)
     {
-        if (pacman.IsPowered())
-        {
-            ghost.SetFrighten(map);
-        }
-        else
-        {
-            if(ghost.IsEaten())
-            {
-                ghost.MoveTowardPen(map);
-            }
-            else
-            {
-                ghost.ResumePrevMode();
-                ghost.getTarget(pacman);
-                ghost.MoveTowardTarget(map);
-            }
-            ghost.Update(map);
-        }
+       ghost.Move(pacman, map);
     }
     // Collision of pacman and ghost detection which terminates the program
     int pacman_x = static_cast<int>(pacman.pos_x);
@@ -104,27 +87,8 @@ void Game::Update()
 
     for(Ghost &ghost : ghosts)
     {
-        int ghost_x = static_cast<int>(ghost.pos_x);
-        int ghost_y = static_cast<int>(ghost.pos_y);
-        if (pacman_x == ghost_x && pacman_y == ghost_y)
-        {
-            //std::cout << "Collision with ghost detected!\n" << "Game Over! You lose...!\n";
-            if (pacman.IsPowered())
-            {
-                ghost.SetDeath();
-            }
-            else
-            {
-                if (!ghost.IsEaten())
-                {
-                    pacman.SetDeath();
-                    running = false;
-                    return;
-                }
-            }
-        }
+        pacman.CheckCollision(ghost, running, score);
     }
-
 }
 
 

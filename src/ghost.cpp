@@ -43,7 +43,29 @@ void Ghost::Initialize()
     eaten = false;
 }
 
-void Ghost::getTarget(PacMan pacman)
+void Ghost::Move(PacMan const &pacman, Map const &map)
+{
+    if (pacman.IsPowered())
+    {
+        SetFrighten(map);
+    }
+    else
+    {
+        if (IsEaten())
+        {
+            MoveTowardPen(map);
+        }
+        else
+        {
+            ResumePrevMode();
+            GetTarget(pacman);
+            MoveTowardTarget(map);
+        }
+    }
+    Update(map);
+}
+
+void Ghost::GetTarget(PacMan const &pacman)
 {
     switch (mode)
     {
@@ -158,7 +180,7 @@ void Ghost::SetSpeed()
     }
 }
 
-int Ghost::CheckJuncs(Map &map)
+int Ghost::CheckJuncs(Map const &map)
 {
     int exit = 0;
     if (!IsWall(Direction::kLeft, map))
@@ -191,7 +213,7 @@ float Ghost::CalcDistance(int x, int y)
     return std::sqrt(std::pow(target.x - x, 2) + std::pow(target.y - y, 2));
 }
 
-void Ghost::MoveTowardTarget(Map &map)
+void Ghost::MoveTowardTarget(Map const &map)
 {
     float distance = 999.0f;
     Direction tempDir = CurrentDirection;
@@ -243,7 +265,7 @@ void Ghost::MoveTowardTarget(Map &map)
     }
 }
 
-void Ghost::CornerHandle(Map &map)
+void Ghost::CornerHandle(Map const &map)
 {
     if (IsAtCenter())
     {
@@ -261,7 +283,7 @@ void Ghost::CornerHandle(Map &map)
             {
                 CurrentDirection = Direction::kRight;
             }
-            else if (!IsWall(Direction::kDown, map) && CurrentDirection != Direction::kUp)
+            else
             {
                 CurrentDirection = Direction::kDown;
             }
@@ -269,7 +291,7 @@ void Ghost::CornerHandle(Map &map)
     }
 }
 
-void Ghost::SetFrighten(Map &map)
+void Ghost::SetFrighten(Map const &map)
 {
     mode = Mode::kFrighten;
     CornerHandle(map);
@@ -290,7 +312,7 @@ void Ghost::SetDeath()
     mode = Mode::kDeath;
 }
 
-void Ghost::MoveTowardPen(Map &map)
+void Ghost::MoveTowardPen(Map const &map)
 {
     if (GetGhostX() <= 13.55 && GetGhostX() >= 13.45 && GetGhostY() >= 15.5f && GetGhostY() <= 20.0f)
     {
@@ -298,7 +320,7 @@ void Ghost::MoveTowardPen(Map &map)
     }
     else
     {
-        target = {14, 15};
+        target = {15, 15};
         MoveTowardTarget(map);
     }
     Update(map);
@@ -315,10 +337,11 @@ bool Ghost::InPen()
         return false;
     }
 }
-void Ghost::MoveInPen(Map &map)
+
+void Ghost::MoveInPen(Map const &map)
 {
     // Initially check they have the correct X coordinates
-    if (GetGhostX() <= 13.55 && GetGhostX() >= 13.45)
+    if (GetGhostX() <= 14.5f && GetGhostX() >= 13.5f)
     {
         if (GetGhostY() >= 18.95f)
         {
@@ -337,14 +360,14 @@ void Ghost::MoveInPen(Map &map)
         {
             CurrentDirection = Direction::kRight;
         }
-        else if (GetGhostX() > 13.5f)
+        else if (GetGhostX() > 14.5f)
         {
             CurrentDirection = Direction::kLeft;
         }
     }
 }
 
-void Ghost::Update(Map &map)
+void Ghost::Update(Map const &map)
 {
     SetSpeed();
     
@@ -398,12 +421,12 @@ void Ghost::UpdatePos(float new_pos_x, float new_pos_y)
     pos_y = fmod(new_pos_y + grid_height, grid_height);
 }
 
-bool Ghost::IsWall(Direction dir, Map &map)
+bool Ghost::IsWall(Direction const dir, Map const &map)
 {
     return GetNextStatus(dir, map) == Status::kWall;
 }
 
-Status Ghost::GetNextStatus(Direction dir, Map &map)
+Status Ghost::GetNextStatus(Direction const dir, Map const &map)
 {
     switch (dir)
     {
@@ -425,7 +448,7 @@ Status Ghost::GetNextStatus(Direction dir, Map &map)
     }
 }
 
-Status Ghost::GetStatus(float x, float y, Map &map)
+Status Ghost::GetStatus(float x, float y, Map const &map)
 {
     int block_x = static_cast<int>(std::floor(fmod(x + grid_width, grid_width)));
     int block_y = static_cast<int>(std::floor(fmod(y + grid_height, grid_height)));

@@ -9,7 +9,7 @@ void PacMan::Initialize()
   pos_y = 17.0f;
 }
 
-void PacMan::Update(Map &map, int &score, int frame_counter)
+void PacMan::Move(Map &map, int &score, int frame_counter)
 {
     if (powered)
     {
@@ -54,15 +54,16 @@ void PacMan::Update(Map &map, int &score, int frame_counter)
         map.SetMapElement(block_x, block_y, Status::kFree);
         map.DecreaseTotalFood();
         UpdatePos(new_pos_x, new_pos_y);
-        score++;
+        score += 10;
         break;
     case Status::kSpecial:
         map.SetMapElement(block_x, block_y, Status::kFree);
         map.DecreaseTotalFood();
+        UpdatePos(new_pos_x, new_pos_y);
+        score += 50;
         powered = true;
         powered_start_frame = frame_counter;
         powered_end_frame = frame_counter;
-        UpdatePos(new_pos_x, new_pos_y);
         break;
     case Status::kWall:
         break;
@@ -70,6 +71,31 @@ void PacMan::Update(Map &map, int &score, int frame_counter)
         break;
     }
 
+}
+
+bool PacMan::CheckCollision(Ghost &ghost, bool &running, int &score)
+{
+  int p_x = static_cast<int>(pos_x);
+  int p_y = static_cast<int>(pos_y);
+  int g_x = static_cast<int>(ghost.pos_x);
+  int g_y = static_cast<int>(ghost.pos_y);
+
+  if (p_x == g_x && p_y == g_y)
+  {
+    if (IsPowered())
+    {
+      ghost.SetDeath();
+      score += 200;
+    }
+    else
+    {
+      if (!ghost.IsEaten())
+      {
+        SetDeath();
+        running = false;
+      }
+    }
+  }
 }
 
 void PacMan::UpdatePos(float new_pos_x, float new_pos_y)

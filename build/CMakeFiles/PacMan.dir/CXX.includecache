@@ -10,9 +10,25 @@
 map.h
 ../src/map.h
 
-/Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/agent.h
+../src/ghost.h
+vector
+-
+random
+-
+SDL.h
+../src/SDL.h
 map.h
-/Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/map.h
+../src/map.h
+pacman.h
+../src/pacman.h
+agent.h
+-
+
+../src/map.h
+vector
+-
+fstream
+-
 
 /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/controller.cpp
 controller.h
@@ -112,7 +128,9 @@ cmath
 SDL.h
 /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/SDL.h
 agent.h
-/Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/agent.h
+-
+ghost.h
+-
 
 /Users/iomargaris/Dev/Udacity_C++_Developer_Nanodegree/Capstone_Project/CppND-Capstone-PacMan/src/renderer.cpp
 renderer.h
