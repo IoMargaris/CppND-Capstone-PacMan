@@ -9,14 +9,21 @@ class Agent
 public:
     enum class Direction{ kUp, kDown, kLeft, kRight };
 
+    /*
+     * Agent Constructor
+     * @param grid_width set width of map
+     * @param grid_height set height of map
+     */
     Agent(size_t grid_width, size_t grid_height)
         : grid_width(grid_width),
           grid_height(grid_height) {}
     
-    // These two pure virtual functions will be implemented by the derived classes
+    /*
+     * Initialization of agent, must be implemented in derived classes
+     */
     virtual void Initialize() = 0;
 
-    /**
+    /*
      * Update position consider period of map at portal
      * @param new_pos_x define a new agent postion in x-direction to be setted
      * @param new_pos_y define a new agent postion in y-direction to be setted
@@ -35,6 +42,5 @@ public:
 
     size_t grid_width;
     size_t grid_height;
-
 };
 #endif // AGENT_H 

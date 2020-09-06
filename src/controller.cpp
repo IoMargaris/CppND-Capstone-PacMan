@@ -3,7 +3,7 @@
 #include "SDL.h"
 #include "pacman.h"
 
-void Controller::ChangeDirection(PacMan &pacman, PacMan::Direction input) const
+void Controller::ChangeDirection(PacMan &pacman, Agent::Direction input) const
 {
     pacman.CurrentDirection = input;
     //return;
