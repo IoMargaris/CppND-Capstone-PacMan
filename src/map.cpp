@@ -2,11 +2,11 @@
 #include <sstream>
 #include "map.h"
 
-Map::Map(int grid_width, int grid_height)
+Map::Map(int grid_width, int grid_height, std::string filename)
     : grid_width(grid_width), grid_height(grid_height)
 {
     map.resize(grid_width, std::vector<Status>(grid_height));
-    file.open("../map/map.txt");
+    file.open(filename);
 }
 
 Map::~Map()

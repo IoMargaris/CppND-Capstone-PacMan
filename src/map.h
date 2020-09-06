@@ -10,7 +10,7 @@ class Map
 {
 public:
     // Constructor / Destructor
-    Map(int grid_width, int grid_height);
+    Map(int grid_width, int grid_height, std::string filename);
     ~Map();
 
     // Classical Behaviour

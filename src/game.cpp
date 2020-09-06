@@ -2,10 +2,10 @@
 #include <iostream>
 #include "SDL.h"
 
-Game::Game(std::size_t grid_width, std::size_t grid_height)
+Game::Game(std::size_t grid_width, std::size_t grid_height, std::string filename)
       : grid_width(grid_width), grid_height(grid_height),
         pacman(grid_width, grid_height),
-        map(grid_width, grid_height)
+        map(grid_width, grid_height, filename)
 {
     Initialize();
 }
