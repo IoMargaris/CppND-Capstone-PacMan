@@ -56,7 +56,7 @@ This project meets Udacity's rubric requirements - See below for more informatio
 | Criteria | Meets Specifications |
 | -------- | -------------------- |
 | The submission must compile and run. | The project code must compile and run without errors. We strongly recommend using cmake and make, as provided in the starter repos. If you choose another build system, the code must compile on any reviewer platform. |
-|
+
 <br/>
 
 ### Loops, Functions, I/O
