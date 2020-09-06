@@ -2,7 +2,7 @@
 
 This is the repository of my Capstone project for the [C++ Developer Nanodegree program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213)
 
-This PacMan game was based on a [Snake Game starter code](https://github.com/udacity/CppND-Capstone-Snake-Game) provided by Udacity. The code for this starter repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+I decided to make a simplified version of the well known '80s arcade game: PacMan! This project was based on a [Snake Game starter code](https://github.com/udacity/CppND-Capstone-Snake-Game) provided by Udacity. The code for this starter repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
 
 <img src="pacman.gif"/>
 
